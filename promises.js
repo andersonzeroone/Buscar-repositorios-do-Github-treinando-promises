@@ -3,8 +3,6 @@ function usersRepos() {
     
     let user = document.querySelector('.input').value;
     let ul = document.querySelector('ul');
-    let li = document.createElement('li');
-
 
     let show = document.querySelector('.user');
     let showUser = document.createElement('p')
@@ -22,21 +20,18 @@ function usersRepos() {
             if(xhr.readyState === 4){
                 if(xhr.status === 200){
                   
-                    let respo =  JSON.parse(xhr.responseText)  
-                    console.log(respo)
-                    let respoName
-                    let a = 0 
-                   
+                    let repo =  JSON.parse(xhr.responseText)  
+                    console.log(` Repositorios ${repo}`)
+                    
+                    let num = 0;
 
-                    let test  = respo.map( function (userLi){
+                    let repoList = repo.map( (repoName) => {
                         let li = document.createElement('li');
-                        li.innerHTML = `Repositorio ${a +1} ${userLi.name}`
+                        li.innerHTML = `Repositorio ${num +1} ${repoName.name}`
                         ul.appendChild(li);
-                        a++
-                       
-                    })  
-
-           
+                        num++ 
+                    })
+                
                 }else{
                     reject('erro');
                 }
@@ -46,6 +41,8 @@ function usersRepos() {
 }
 
 function usersPromises(){
+    
+
     usersRepos()
         .then( function(response){
             console.log(response);
@@ -55,3 +52,4 @@ function usersPromises(){
             console.log(error);
         })
 }
+
