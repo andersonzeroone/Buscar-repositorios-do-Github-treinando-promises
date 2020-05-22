@@ -4,6 +4,7 @@ function usersRepos() {
     let user = document.querySelector('.input').value;
     let ul = document.querySelector('ul');
 
+  
     let show = document.querySelector('.user');
     let showUser = document.createElement('p')
     showUser.innerHTML = `Usuario: ${user}` 
@@ -23,15 +24,18 @@ function usersRepos() {
                     let repo =  JSON.parse(xhr.responseText)  
                     console.log(` Repositorios ${repo}`)
                     
+                    let repoName = reName => reName.name
+                    let repoList = repo.map(repoName);
+                    
                     let num = 0;
-
-                    let repoList = repo.map( (repoName) => {
+                    
+                    for(let i=0; i < repoList.length; i++ ){
                         let li = document.createElement('li');
-                        li.innerHTML = `Repositorio ${num +1} ${repoName.name}`
+                        li.innerHTML = `Repositorio ${num +1}: ${repoList[i]}}`
                         ul.appendChild(li);
-                        num++ 
-                    })
-                
+                         num++;
+                    }
+  
                 }else{
                     reject('erro');
                 }
@@ -41,8 +45,9 @@ function usersRepos() {
 }
 
 function usersPromises(){
-    
 
+
+    
     usersRepos()
         .then( function(response){
             console.log(response);
