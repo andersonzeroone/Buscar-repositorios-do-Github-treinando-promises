@@ -27,39 +27,23 @@ function usersRepos() { //andersonzeroone
         console.log(response);
         console.log( typeof response)
         console.log( response[0].name)
+   
+        let list = [];
+       
+        this.list = list
+        let num = 0;
+        let ul = document.querySelector('ul');
+        let reposList = response.map((repo)=> {
 
-        let reposList = []
+            let li = document.createElement('li');
+            li.innerHTML = `Repositorio ${num +1}: ${repo.name}`
+            ul.appendChild(li);
+             num++;
 
-        let repoName = reName => reName.name
-        repoList = response.map(repoName)
-        // reposList[0]= response[0].name;
+             list.push(repo.name)
+        })
+        console.log(list)
 
-        console.log(reposList[2])
-
-        // let num = 0;
-
-        // return response.map((repo)=> {
-
-        //     let li = document.createElement('li');
-        //     li.innerHTML = `Repositorio ${num +1}: ${repoList[i]}`
-        //     ul.appendChild(li);
-        //      num++;
-        // })
-        // let repo =  JSON.parse(xhr.responseText)  
-        // console.log(` Repositorios ${repo}`)
-        
-        // let repoName = reName => reName.name
-        // let repoList = repo.map(repoName);
-        
-        // let num = 0;
-        
-        // for(let i=0; i < repoList.length; i++ ){
-        //     let li = document.createElement('li');
-        //     li.innerHTML = `Repositorio ${num +1}: ${repoList[i]}`
-        //     ul.appendChild(li);
-        //      num++;
-        // }
-        // document.querySelector(".input").value = ''
     })
     .catch( function (erros){
         console.warn(error);
