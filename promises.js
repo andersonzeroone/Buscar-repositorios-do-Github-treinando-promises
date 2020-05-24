@@ -1,62 +1,3 @@
-function usersRepos() { //andersonzeroone
-    return new Promise(function(resolve, reject){
-    
-
-    setLoading(true)
-    let user = document.querySelector('.input').value;
-
-    console.log(user);
-
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET',`https://api.github.com/users/${user}/repos`);
-    xhr.send(null);
-
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState === 4){
-                if(xhr.status === 200){
-
-                    setLoading(false);
-                    resolve(JSON.parse(xhr.responseText))
-                    
-                }else{
-                    setLoading(false);
-                    reject('erro na requisição!');
-                }
-            }
-        }
-    })
-    .then((response) =>{
-        console.log(response);
-        console.log( typeof response)
-
-        let list = [];
-
-        let ul = document.createElement('ul');
-        ul.setAttribute('id','ulList');
-
-        let render = document.querySelector('.render');
-        let num = 0;
-        
-        response.forEach(repo => {
-            list.push(repo.name)
-        });
-        
-        console.log(list);
-
-        list.forEach( repoName =>{
-
-            let li = document.createElement('li');
-            li.setAttribute('id', 'list');
-            li.innerHTML = `Repositorio ${num +1}: ${repoName}`
-            ul.appendChild(li);
-            render.appendChild(ul)
-             num++;
-        })
-        document.querySelector(".input").value = ''
-    })
-    .catch((erros) =>{ console.warn(erros),alert(erros)})
-}
-
 function usersPromises(){
 
     let user = document.querySelector('.input').value; 
@@ -72,9 +13,79 @@ function usersPromises(){
                 document.getElementById('name').remove()
             ) 
         )    
-
- 
 }
+
+function usersRepos() { //andersonzeroone
+    return new Promise(function(resolve, reject){
+
+    setLoading(true);
+
+    let user = document.querySelector('.input').value;
+    let urlUser = `https://api.github.com/users/${user}`; 
+    let urlRepos =  `https://api.github.com/users/${user}/repos`;   
+    console.log(user);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET',`${urlRepos}`);
+    xhr.send(null);
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status === 200){
+
+                    setLoading(false);
+
+                    resolve(JSON.parse(xhr.responseText));
+                    
+                }else{
+                    setLoading(false);
+                    document.getElementById('name').remove()
+                    reject('erro na requisição!');
+                }
+            }
+        }
+    })
+    .then((response) =>{
+        console.log(` repo ${response}`);
+
+        let list = [];
+
+        let ul = document.createElement('ul');
+        ul.setAttribute('id','ulList');
+
+        let render = document.querySelector('.render');
+        let num = 0;
+        
+        response.forEach(repo => {
+            list.push({
+                repositorioName:repo.name,
+                url: repo.html_url
+            })
+        });
+        
+        console.log(list);
+
+        list.forEach( repo =>{
+
+            let li = document.createElement('li');
+            li.setAttribute('id', 'list');
+            li.appendChild(document.createTextNode(`Repositorio ${num +1}: ${repo.repositorioName} =>  `))
+            let urlLink = document.createElement('a');
+            urlLink.setAttribute('target','_blank');
+            urlLink.setAttribute('href', repo.url);
+            urlLink.appendChild(document.createTextNode('Visitar'));
+            
+            li.appendChild(urlLink);
+            ul.appendChild(li);
+            render.appendChild(ul)
+            num++;
+        })
+
+        document.querySelector(".input").value = ''
+    })
+    .catch((erros) =>{ console.warn(erros),alert(erros)})
+}
+
 
 function setLoading(loading){
     let user = document.querySelector('.input').value;
@@ -95,6 +106,5 @@ function setLoading(loading){
             showUser.innerHTML = `Usuario: ${user}`,
             show.appendChild(showUser)
         )
-
-                
+              
 }
