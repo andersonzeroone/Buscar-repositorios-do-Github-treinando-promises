@@ -1,10 +1,8 @@
 function usersRepos() { //andersonzeroone
     return new Promise(function(resolve, reject){
     
-    let list = [];
-    this.list = list;
+
     setLoading(true)
-    let ul = document.querySelector('ul');
     let user = document.querySelector('.input').value;
 
     console.log(user);
@@ -16,9 +14,10 @@ function usersRepos() { //andersonzeroone
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4){
                 if(xhr.status === 200){
+
                     setLoading(false);
                     resolve(JSON.parse(xhr.responseText))
-    
+                    
                 }else{
                     setLoading(false);
                     reject('erro na requisição!');
@@ -26,14 +25,17 @@ function usersRepos() { //andersonzeroone
             }
         }
     })
-    .then( (response) =>{
+    .then((response) =>{
         console.log(response);
         console.log( typeof response)
-        console.log( response[0].name);
 
-        let ul = document.querySelector('ul');
+        let list = [];
+
+        let ul = document.createElement('ul');
+        ul.setAttribute('id','ulList');
+
+        let render = document.querySelector('.render');
         let num = 0;
-        
         
         response.forEach(repo => {
             list.push(repo.name)
@@ -42,60 +44,57 @@ function usersRepos() { //andersonzeroone
         console.log(list);
 
         list.forEach( repoName =>{
+
             let li = document.createElement('li');
             li.setAttribute('id', 'list');
             li.innerHTML = `Repositorio ${num +1}: ${repoName}`
             ul.appendChild(li);
+            render.appendChild(ul)
              num++;
-        }) 
-        
-        // let reposList = response.map((repo)=> {
-
-        //     let li = document.createElement('li');
-        //     li.innerHTML = `Repositorio ${num +1}: ${repo.name}`
-        //     ul.appendChild(li);
-        //      num++;
-
-        //     list.push(repo.name);
-        // })
-        // console.log(list);
-
+        })
+        document.querySelector(".input").value = ''
     })
     .catch((erros) =>{ console.warn(erros),alert(erros)})
 }
 
 function usersPromises(){
-    let list = document.querySelectorAll('li').value;
 
-    if(list == ''){
-    // let user = document.querySelector('.input').value
-    usersRepos()  
-    }else{
-        document.querySelectorAll('list').remove()
-    }
-    // user == '' ? alert('Preencha o Campo!'):usersRepos()     
+    let user = document.querySelector('.input').value; 
+    let ul = document.querySelector('ul');   
+    
+    user == '' ? (alert('Preencha o Campo!')):
+        (
+            ul == null ?(usersRepos()
+            ):
+            (
+                usersRepos(),
+                document.getElementById('ulList').remove(),
+                document.getElementById('name').remove()
+            ) 
+        )    
+
+ 
 }
 
-
-
 function setLoading(loading){
-
     let user = document.querySelector('.input').value;
     let show = document.querySelector('.user');
     let showUser = document.createElement('p');
+    showUser.setAttribute('id','name');
 
     let loadingEl = document.querySelector('.load');
     let menssenger = document.createElement('span') ;
    
     loading == true?(
-        showUser.innerHTML = `Usuario: ${user}` ,
-        show.appendChild(showUser),
-        menssenger.setAttribute('id', 'loading'),
-        menssenger.innerHTML = 'loading...',  
-        loadingEl.appendChild(menssenger)
+            menssenger.setAttribute('id', 'loading'),
+            menssenger.innerHTML = 'loading...',  
+            loadingEl.appendChild(menssenger)
         )
-        :document.getElementById('loading').remove()
-        
+        :(
+            document.getElementById('loading').remove(),
+            showUser.innerHTML = `Usuario: ${user}`,
+            show.appendChild(showUser)
+        )
 
+                
 }
-
