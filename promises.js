@@ -1,14 +1,15 @@
+// import api from './api';
+
 function usersRepos() { //andersonzeroone
     return new Promise(function(resolve, reject){
-    
-
     setLoading(true)
     let user = document.querySelector('.input').value;
-
+    let urlUser = `https://api.github.com/users/${user}`; 
+    let urlRepos =  `https://api.github.com/users/${user}/repos`;   
     console.log(user);
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET',`https://api.github.com/users/${user}/repos`);
+    xhr.open('GET',`${urlRepos}`);
     xhr.send(null);
 
         xhr.onreadystatechange = function(){
@@ -16,7 +17,8 @@ function usersRepos() { //andersonzeroone
                 if(xhr.status === 200){
 
                     setLoading(false);
-                    resolve(JSON.parse(xhr.responseText))
+
+                   resolve(JSON.parse(xhr.responseText));
                     
                 }else{
                     setLoading(false);
@@ -26,7 +28,8 @@ function usersRepos() { //andersonzeroone
         }
     })
     .then((response) =>{
-        console.log(response);
+        console.log(` repo ${response}`);
+
         console.log( typeof response)
 
         let list = [];
@@ -38,20 +41,30 @@ function usersRepos() { //andersonzeroone
         let num = 0;
         
         response.forEach(repo => {
-            list.push(repo.name)
+            list.push({
+                repositorioName:repo.name,
+                url: repo.html_url
+            })
         });
         
         console.log(list);
 
-        list.forEach( repoName =>{
+        list.forEach( repo =>{
 
             let li = document.createElement('li');
             li.setAttribute('id', 'list');
-            li.innerHTML = `Repositorio ${num +1}: ${repoName}`
+            li.appendChild(document.createTextNode(`Repositorio ${num +1}: ${repo.repositorioName} =>  `))
+            let urlLink = document.createElement('a');
+            urlLink.setAttribute('target','_blank');
+            urlLink.setAttribute('href', repo.url);
+            urlLink.appendChild(document.createTextNode('Visitar'));
+            
+            li.appendChild(urlLink);
             ul.appendChild(li);
             render.appendChild(ul)
-             num++;
+            num++;
         })
+
         document.querySelector(".input").value = ''
     })
     .catch((erros) =>{ console.warn(erros),alert(erros)})
