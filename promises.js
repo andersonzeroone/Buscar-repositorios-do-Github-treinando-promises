@@ -1,8 +1,28 @@
-// import api from './api';
+
+function usersPromises(){
+
+    let user = document.querySelector('.input').value; 
+    let ul = document.querySelector('ul');   
+    
+    user == '' ? (alert('Preencha o Campo!')):
+        (
+            ul == null ?(usersRepos()
+            ):
+            (
+                usersRepos(),
+                document.getElementById('ulList').remove(),
+                document.getElementById('name').remove()
+            ) 
+        )    
+
+ 
+}
 
 function usersRepos() { //andersonzeroone
     return new Promise(function(resolve, reject){
-    setLoading(true)
+
+    setLoading(true);
+
     let user = document.querySelector('.input').value;
     let urlUser = `https://api.github.com/users/${user}`; 
     let urlRepos =  `https://api.github.com/users/${user}/repos`;   
@@ -18,7 +38,7 @@ function usersRepos() { //andersonzeroone
 
                     setLoading(false);
 
-                   resolve(JSON.parse(xhr.responseText));
+                    resolve(JSON.parse(xhr.responseText));
                     
                 }else{
                     setLoading(false);
@@ -29,8 +49,6 @@ function usersRepos() { //andersonzeroone
     })
     .then((response) =>{
         console.log(` repo ${response}`);
-
-        console.log( typeof response)
 
         let list = [];
 
@@ -70,24 +88,6 @@ function usersRepos() { //andersonzeroone
     .catch((erros) =>{ console.warn(erros),alert(erros)})
 }
 
-function usersPromises(){
-
-    let user = document.querySelector('.input').value; 
-    let ul = document.querySelector('ul');   
-    
-    user == '' ? (alert('Preencha o Campo!')):
-        (
-            ul == null ?(usersRepos()
-            ):
-            (
-                usersRepos(),
-                document.getElementById('ulList').remove(),
-                document.getElementById('name').remove()
-            ) 
-        )    
-
- 
-}
 
 function setLoading(loading){
     let user = document.querySelector('.input').value;
@@ -108,6 +108,5 @@ function setLoading(loading){
             showUser.innerHTML = `Usuario: ${user}`,
             show.appendChild(showUser)
         )
-
-                
+              
 }
