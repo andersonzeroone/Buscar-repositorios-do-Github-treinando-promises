@@ -1,4 +1,3 @@
-
 function usersPromises(){
 
     let user = document.querySelector('.input').value; 
@@ -14,8 +13,6 @@ function usersPromises(){
                 document.getElementById('name').remove()
             ) 
         )    
-
- 
 }
 
 function usersRepos() { //andersonzeroone
@@ -42,6 +39,7 @@ function usersRepos() { //andersonzeroone
                     
                 }else{
                     setLoading(false);
+                    document.getElementById('name').remove()
                     reject('erro na requisição!');
                 }
             }
