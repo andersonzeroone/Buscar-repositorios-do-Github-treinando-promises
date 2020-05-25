@@ -1,13 +1,10 @@
 function usersPromises(){
-
     let user = document.querySelector('.input').value; 
     let ul = document.querySelector('ul');   
-    let urlUser = `https://api.github.com/users/${user}`; 
-    let urlRepos =  `https://api.github.com/users/${user}/repos`;  
-
+    
     user == '' ? (alert('Preencha o Campo!')):
         (
-            ul == null ?(usersRepos(urlRepos)
+            ul == null ?(usersRepos()
             ):
             (
                 usersRepos(),
@@ -17,15 +14,15 @@ function usersPromises(){
         )    
 }
 
-function usersRepos(url) { //andersonzeroone
-    let urll = url
-     urll = this.urll
-    return new Promise(function(resolve, reject,urll ){
+function usersRepos() { //andersonzeroone
+    return new Promise(function(resolve, reject){
 
     setLoading(true);
 
     let user = document.querySelector('.input').value;
-
+    let urlUser = `https://api.github.com/users/${user}`; 
+    let urlRepos =  `https://api.github.com/users/${user}/repos`;   
+    console.log(user);
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET',`${urlRepos}`);
