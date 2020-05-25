@@ -1,5 +1,4 @@
 function usersPromises(){
-
     let user = document.querySelector('.input').value; 
     let ul = document.querySelector('ul');   
     
