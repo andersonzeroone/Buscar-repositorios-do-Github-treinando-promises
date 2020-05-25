@@ -1,6 +1,7 @@
 body{
-    background-image: linear-gradient(to bottom, #8c919b, #879ca4, #86a6a3, #95ae9a, #b1b191);
-}
+    background-color: #eee;
+    /* background-image: linear-gradient(to bottom, #8c919b, #879ca4, #86a6a3, #95ae9a, #b1b191); */
+}   
 
 .title{
     display: flex;

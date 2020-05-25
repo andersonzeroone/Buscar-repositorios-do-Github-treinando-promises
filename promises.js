@@ -69,7 +69,7 @@ function usersRepos() { //andersonzeroone
 
             let li = document.createElement('li');
             li.setAttribute('id', 'list');
-            li.appendChild(document.createTextNode(`Repositorio ${num +1}: ${repo.repositorioName} =>  `))
+            li.appendChild(document.createTextNode(`${num +1}: ${repo.repositorioName} =>  `))
             let urlLink = document.createElement('a');
             urlLink.setAttribute('target','_blank');
             urlLink.setAttribute('href', repo.url);
