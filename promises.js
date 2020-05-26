@@ -66,14 +66,26 @@ function setLoading(loading){
 
 function render(user,repositorio){
     console.log(user.login);
-    let renderUser = document.querySelector('.user .data').cloneNode(true);
-    renderUser.querySelector('.userName').innerHTML = `User Name:${user.login}`
-    renderUser.querySelector('.name').innerHTML = `Name:${user.name}`;
-    renderUser.querySelector('.locale').innerHTML = `Location:${user.location}`
-    // renderUser.querySelector('.repo').innerHTML = `Repositorios:`
 
+    let linkUser = document.createElement('a');
+    linkUser.setAttribute('target', '_blank');
+    linkUser.setAttribute('href', user.html_url);
+    linkUser.appendChild(document.createTextNode('Acessar'));
+
+    // document.querySelector('.data .link').appendChild(linkUser);
     
+    let imgUser = document.querySelector('.user .img').cloneNode(true);
+    imgUser.querySelector('.img img').src = user.avatar_url;
+    document.querySelector('.user').appendChild(imgUser);
+
+    let renderUser = document.querySelector('.user .data').cloneNode(true);
+    renderUser.querySelector('.userName').innerHTML = `User Name: ${user.login}`
+    renderUser.querySelector('.name').innerHTML = `Name: ${user.name}`;
+    renderUser.querySelector('.locale').innerHTML = `Location: ${user.location}`
+    renderUser.querySelector('.link').innerHTML = linkUser
+    // renderUser.querySelector('.user p').innerHTML = `Repositorios:`
     document.querySelector('.user').appendChild(renderUser);
+
     // let imgEl = document.createElement('img');
     // imgEl.setAttribute('src',user.avatar_url);
 
@@ -88,10 +100,7 @@ function render(user,repositorio){
     // let locale = document.createElement('span');
     // locale.appendChild(document.createTextNode(`Localização:${user.location}`)); 
 
-    // let linkUser = document.createElement('a');
-    // linkUser.setAttribute('target', '_blank');
-    // linkUser.setAttribute('href', user.html_url);
-    // linkUser.appendChild(document.createTextNode('Acessar'));
+
 
     // let renderUser = document.querySelector('.user');
     // renderUser.appendChild(imgEl);
@@ -99,8 +108,6 @@ function render(user,repositorio){
     // renderUser.appendChild(userName);
     // renderUser.appendChild(locale);
     // renderUser.appendChild(linkUser);
-
-
  
     console.log(`aqui ${user}`)
     let list = [];
@@ -124,7 +131,7 @@ function render(user,repositorio){
 
             let li = document.createElement('li');
             li.setAttribute('id', 'list');
-            li.appendChild(document.createTextNode(`${num +1}: ${repo.repositorioName} =>  `))
+            li.appendChild(document.createTextNode(`* ${repo.repositorioName} =>  `))
             let urlLink = document.createElement('a');
             urlLink.setAttribute('target','_blank');
             urlLink.setAttribute('href', repo.url);
@@ -133,7 +140,6 @@ function render(user,repositorio){
             li.appendChild(urlLink);
             ul.appendChild(li);
             render.appendChild(ul)
-            num++;
         })
 
         document.querySelector(".input").value = ''
