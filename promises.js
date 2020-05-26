@@ -6,17 +6,21 @@ function usersPromises(){
     
     if(ul != null ){
         document.getElementById('ulList').remove()
-        document.getElementById('name').remove()
+        // document.getElementById('name').remove()
     }
 
     user == '' ?(alert('Preencha o Campo!')):
         ( 
-            usersRepos(urlRepos)
-                .then((response) =>{
-                     console.log(` repo ${response}`);
-                    render(response);
+            usersRepos(urlUser)
+                .then((user) =>{
+                    console.log(` repo ${user}`);
+                        usersRepos(urlRepos)
+                            .then( (repositorio) =>{
+                                render(user, repositorio);
+                            })
+                    
                 })
-                .catch((erros) =>{ console.warn(erros),alert(erros)}) 
+                .catch((erros) =>{ console.warn(erros),alert(erros)})
         )  
 }
 
@@ -44,10 +48,6 @@ const usersRepos = (url) => new Promise((resolve, reject) =>{
 
 
 function setLoading(loading){
-    let user = document.querySelector('.input').value;
-    let show = document.querySelector('.user');
-    let showUser = document.createElement('p');
-    showUser.setAttribute('id','name');
 
     let loadingEl = document.querySelector('.load');
     let menssenger = document.createElement('span') ;
@@ -58,14 +58,19 @@ function setLoading(loading){
             loadingEl.appendChild(menssenger)
         )
         :(
-            document.getElementById('loading').remove(),
-            showUser.innerHTML = `Usuario: ${user}`,
-            show.appendChild(showUser)
+            document.getElementById('loading').remove()
+
         )
               
 }
 
-function render(response){
+function render(user,repositorio){
+
+    
+
+
+
+    console.log(`aqui ${user}`)
     let list = [];
 
         let ul = document.createElement('ul');
@@ -74,7 +79,7 @@ function render(response){
         let render = document.querySelector('.render');
         let num = 0;
         
-        response.forEach(repo => {
+        repositorio.forEach(repo => {
             list.push({
                 repositorioName:repo.name,
                 url: repo.html_url
