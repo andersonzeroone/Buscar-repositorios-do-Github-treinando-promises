@@ -6,16 +6,16 @@ function usersPromises(){
     
     if(ul != null ){
         document.getElementById('ulList').remove()
-        // document.getElementById('name').remove()
+       
     }
 
     user == '' ?(alert('Preencha o Campo!')):
         ( 
             usersRepos(urlUser)
-                .then((user) =>{
+                .then( function(user){
                     console.log(` repo ${user}`);
                         usersRepos(urlRepos)
-                            .then( (repositorio) =>{
+                            .then( function (repositorio){
                                 render(user, repositorio);
                             })
                     
@@ -65,11 +65,43 @@ function setLoading(loading){
 }
 
 function render(user,repositorio){
+    console.log(user.login);
+    let renderUser = document.querySelector('.user .data').cloneNode(true);
+    renderUser.querySelector('.userName').innerHTML = `User Name:${user.login}`
+    renderUser.querySelector('.name').innerHTML = `Name:${user.name}`;
+    renderUser.querySelector('.locale').innerHTML = `Location:${user.location}`
+    // renderUser.querySelector('.repo').innerHTML = `Repositorios:`
 
     
+    document.querySelector('.user').appendChild(renderUser);
+    // let imgEl = document.createElement('img');
+    // imgEl.setAttribute('src',user.avatar_url);
 
 
+    // let name = document.createElement('span');
+    // name.appendChild(document.createTextNode(`Name:${user.name}`));
 
+    // let userName = document.createElement('span');
+    // userName.appendChild(document.createTextNode(`user Name:${user.login}`));
+
+
+    // let locale = document.createElement('span');
+    // locale.appendChild(document.createTextNode(`Localização:${user.location}`)); 
+
+    // let linkUser = document.createElement('a');
+    // linkUser.setAttribute('target', '_blank');
+    // linkUser.setAttribute('href', user.html_url);
+    // linkUser.appendChild(document.createTextNode('Acessar'));
+
+    // let renderUser = document.querySelector('.user');
+    // renderUser.appendChild(imgEl);
+    // renderUser.appendChild(name);
+    // renderUser.appendChild(userName);
+    // renderUser.appendChild(locale);
+    // renderUser.appendChild(linkUser);
+
+
+ 
     console.log(`aqui ${user}`)
     let list = [];
 
