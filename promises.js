@@ -4,27 +4,20 @@ function usersPromises(){
     let urlUser = `https://api.github.com/users/${user}`; 
     let urlRepos =  `https://api.github.com/users/${user}/repos`;     
     
-    user == '' ? (alert('Preencha o Campo!')):
-        (
-            ul == null ?(
-                usersRepos(urlRepos)
-                        .then((response) =>{
-                            console.log(` repo ${response}`);
-                            render(response);
-                        })
-                        .catch((erros) =>{ console.warn(erros),alert(erros)})
-            ):
-            (
-                usersRepos(urlRepos)
-                    .then((response) =>{
-                        console.log(` repo ${response}`);
-                        render(response);
-                    })
-                    .catch((erros) =>{ console.warn(erros),alert(erros)}),
-                document.getElementById('ulList').remove(),
-                document.getElementById('name').remove()
-            ) 
-        )    
+    if(ul != null ){
+        document.getElementById('ulList').remove()
+        document.getElementById('name').remove()
+    }
+
+    user == '' ?(alert('Preencha o Campo!')):
+        ( 
+            usersRepos(urlRepos)
+                .then((response) =>{
+                     console.log(` repo ${response}`);
+                    render(response);
+                })
+                .catch((erros) =>{ console.warn(erros),alert(erros)}) 
+        )  
 }
 
 const usersRepos = (url) => new Promise((resolve, reject) =>{
