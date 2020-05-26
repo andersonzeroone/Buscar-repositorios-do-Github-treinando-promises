@@ -6,17 +6,21 @@ function usersPromises(){
     
     if(ul != null ){
         document.getElementById('ulList').remove()
-        document.getElementById('name').remove()
+       
     }
 
     user == '' ?(alert('Preencha o Campo!')):
         ( 
-            usersRepos(urlRepos)
-                .then((response) =>{
-                     console.log(` repo ${response}`);
-                    render(response);
+            usersRepos(urlUser)
+                .then( function(user){
+                    console.log(` repo ${user}`);
+                        usersRepos(urlRepos)
+                            .then( function (repositorio){
+                                render(user, repositorio);
+                            })
+                    
                 })
-                .catch((erros) =>{ console.warn(erros),alert(erros)}) 
+                .catch((erros) =>{ console.warn(erros),alert(erros)})
         )  
 }
 
@@ -44,10 +48,6 @@ const usersRepos = (url) => new Promise((resolve, reject) =>{
 
 
 function setLoading(loading){
-    let user = document.querySelector('.input').value;
-    let show = document.querySelector('.user');
-    let showUser = document.createElement('p');
-    showUser.setAttribute('id','name');
 
     let loadingEl = document.querySelector('.load');
     let menssenger = document.createElement('span') ;
@@ -58,14 +58,51 @@ function setLoading(loading){
             loadingEl.appendChild(menssenger)
         )
         :(
-            document.getElementById('loading').remove(),
-            showUser.innerHTML = `Usuario: ${user}`,
-            show.appendChild(showUser)
+            document.getElementById('loading').remove()
+
         )
               
 }
 
-function render(response){
+function render(user,repositorio){
+    console.log(user.login);
+    let renderUser = document.querySelector('.user .data').cloneNode(true);
+    renderUser.querySelector('.userName').innerHTML = `User Name:${user.login}`
+    renderUser.querySelector('.name').innerHTML = `Name:${user.name}`;
+    renderUser.querySelector('.locale').innerHTML = `Location:${user.location}`
+    // renderUser.querySelector('.repo').innerHTML = `Repositorios:`
+
+    
+    document.querySelector('.user').appendChild(renderUser);
+    // let imgEl = document.createElement('img');
+    // imgEl.setAttribute('src',user.avatar_url);
+
+
+    // let name = document.createElement('span');
+    // name.appendChild(document.createTextNode(`Name:${user.name}`));
+
+    // let userName = document.createElement('span');
+    // userName.appendChild(document.createTextNode(`user Name:${user.login}`));
+
+
+    // let locale = document.createElement('span');
+    // locale.appendChild(document.createTextNode(`Localização:${user.location}`)); 
+
+    // let linkUser = document.createElement('a');
+    // linkUser.setAttribute('target', '_blank');
+    // linkUser.setAttribute('href', user.html_url);
+    // linkUser.appendChild(document.createTextNode('Acessar'));
+
+    // let renderUser = document.querySelector('.user');
+    // renderUser.appendChild(imgEl);
+    // renderUser.appendChild(name);
+    // renderUser.appendChild(userName);
+    // renderUser.appendChild(locale);
+    // renderUser.appendChild(linkUser);
+
+
+ 
+    console.log(`aqui ${user}`)
     let list = [];
 
         let ul = document.createElement('ul');
@@ -74,7 +111,7 @@ function render(response){
         let render = document.querySelector('.render');
         let num = 0;
         
-        response.forEach(repo => {
+        repositorio.forEach(repo => {
             list.push({
                 repositorioName:repo.name,
                 url: repo.html_url
