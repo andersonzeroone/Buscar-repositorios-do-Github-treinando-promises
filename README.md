@@ -2,6 +2,11 @@
 
 O projeto foi criado com o intuito de ver na prática o funcionamento das promises e async. O projeto consiste no consumo da api do GitHub para buscar os repositórios do usuário informado assim como outras informações como: imagem, nome e cidade. Além disso, permite visitar os repositórios ou pagina do usuário através de um link.
 
+## Execução:
+
+Para executar o projeto basta inicializar o arquivo "index.hmtl".
+
+
 ### o que foi utilizado utilizado :
 
 * Promises;
@@ -10,12 +15,10 @@ O projeto foi criado com o intuito de ver na prática o funcionamento das promis
 
 
 
-## Execução:
 
-Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
-### Promises
+## Promises
 
-### XMLhttpRequest
+## XMLhttpRequest
 
-### Api do Github
+## Api do Github
