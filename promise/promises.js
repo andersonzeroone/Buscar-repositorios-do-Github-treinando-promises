@@ -6,8 +6,7 @@ function usersPromises(){
     
     if(ul != null ){
         document.getElementById('ulList').remove()
-        document.querySelector('.user').classList.remove();
-        
+
         document.querySelector('.img').innerHTML = ``; 
         document.querySelector('.name').innerHTML = ``;
         document.querySelector('.userName').innerHTML = ``;
@@ -47,7 +46,6 @@ const usersRepos = (url) => new Promise((resolve, reject) =>{
                     
                 }else{
                     setLoading(false);
-                    // document.getElementById('name').remove()
                     reject('erro na requisição!');
                 }
             }
