@@ -49,11 +49,12 @@ li{
 
 .repo{
     font-weight: bold;
-    padding-top: 60px;
+    padding-top: 20px;
+    margin-left: 50px;
 }
 #ulList{
     display: flex;
     flex-direction: column;
-    margin-left:498px;
-    margin-top: 25px;
+    margin-left:20px;
+    margin-top:15px;
 }

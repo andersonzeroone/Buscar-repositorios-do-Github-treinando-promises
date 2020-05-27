@@ -6,8 +6,16 @@ function usersPromises(){
     
     if(ul != null ){
         document.getElementById('ulList').remove()
-       
+        document.querySelector('.user').classList.remove();
+        
+        document.querySelector('.img').innerHTML = ``; 
+        document.querySelector('.name').innerHTML = ``;
+        document.querySelector('.userName').innerHTML = ``;
+        document.querySelector('.locale').innerHTML = ``;
+        document.querySelector('.repo').innerHTML = ``;
+        document.querySelector('.link').innerHTML = ``;
     }
+    
 
     user == '' ?(alert('Preencha o Campo!')):
         ( 
@@ -39,7 +47,7 @@ const usersRepos = (url) => new Promise((resolve, reject) =>{
                     
                 }else{
                     setLoading(false);
-                    document.getElementById('name').remove()
+                    // document.getElementById('name').remove()
                     reject('erro na requisição!');
                 }
             }
@@ -67,48 +75,31 @@ function setLoading(loading){
 function render(user,repositorio){
     console.log(user.login);
 
+    let imgEl = document.createElement('img');
+    imgEl.setAttribute('src',user.avatar_url);
+    document.querySelector('.img').appendChild(imgEl);
+
+    let name = document.createElement('span');
+    name.appendChild(document.createTextNode(`Name: ${user.name}`));
+    document.querySelector('.name').appendChild(name);
+
+    let userName = document.createElement('span');
+    userName.appendChild(document.createTextNode(`user Name: ${user.login}`));
+    document.querySelector('.userName').appendChild(userName);
+
+    let locale = document.createElement('span');
+    locale.appendChild(document.createTextNode(`Localização: ${user.location}`)); 
+    document.querySelector('.locale').appendChild(locale);
+
     let linkUser = document.createElement('a');
     linkUser.setAttribute('target', '_blank');
     linkUser.setAttribute('href', user.html_url);
     linkUser.appendChild(document.createTextNode('Acessar'));
-
-    // document.querySelector('.data .link').appendChild(linkUser);
+    document.querySelector('.link').appendChild(linkUser);
     
-    let imgUser = document.querySelector('.user .img').cloneNode(true);
-    imgUser.querySelector('.img img').src = user.avatar_url;
-    document.querySelector('.user').appendChild(imgUser);
+    let tagRepo = document.querySelector('.repo');
+    tagRepo.innerHTML = `Repositorios: `
 
-    let renderUser = document.querySelector('.user .data').cloneNode(true);
-    renderUser.querySelector('.userName').innerHTML = `User Name: ${user.login}`
-    renderUser.querySelector('.name').innerHTML = `Name: ${user.name}`;
-    renderUser.querySelector('.locale').innerHTML = `Location: ${user.location}`
-    renderUser.querySelector('.link').innerHTML = linkUser
-    // renderUser.querySelector('.user p').innerHTML = `Repositorios:`
-    document.querySelector('.user').appendChild(renderUser);
-
-    // let imgEl = document.createElement('img');
-    // imgEl.setAttribute('src',user.avatar_url);
-
-
-    // let name = document.createElement('span');
-    // name.appendChild(document.createTextNode(`Name:${user.name}`));
-
-    // let userName = document.createElement('span');
-    // userName.appendChild(document.createTextNode(`user Name:${user.login}`));
-
-
-    // let locale = document.createElement('span');
-    // locale.appendChild(document.createTextNode(`Localização:${user.location}`)); 
-
-
-
-    // let renderUser = document.querySelector('.user');
-    // renderUser.appendChild(imgEl);
-    // renderUser.appendChild(name);
-    // renderUser.appendChild(userName);
-    // renderUser.appendChild(locale);
-    // renderUser.appendChild(linkUser);
- 
     console.log(`aqui ${user}`)
     let list = [];
 
