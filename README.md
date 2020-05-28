@@ -20,11 +20,11 @@ Fonte:
 ### Promises
  A promise surgiu desde o 2015 no ES6, a promise é ulrilizada pelas principais requisições http como, axios,APiFetch entre outras. Facilemnte identificada pelas callback .then e .catch, o .then retorna sucesso na requisição e receber o resolve como parâmetro e o .catch para erros recebe o reject como parâmetro.
 
- ##  Estados de uma Promise
+## Estados de uma Promise
 
-Uma promise pode pode assumir quatro estados principais:
+Uma promise pode assumir quatro estados principais:
 
-* Pending: O estado inicial da Promise, ela foi iniciada mas ainda não foi realizada nem rejeitada;
+* Pending: O estado inicial da Promise, ela foi iniciada, mas ainda não foi realizada nem rejeitada;
 
 * Fulfilled: Sucesso da operação, é o que chamamos de uma Promise realizada (ou, em inglês, resolved) — eu, pessoalmente, prefiro o termo resolvida;
 
@@ -32,10 +32,88 @@ Uma promise pode pode assumir quatro estados principais:
 
 * Settled: É o estado final da Promise, quando ela já sabe se foi resolved ou rejected.
 
+Quando uma promise estiver em estado pendente (pending) pode se tornar uma promises resolvida com um valor, ou rejeitada (retornar um erro). Quando um dos casos acontecer o metodo .then será chamodo ele irá verificar se houve um sucesso(resolve) ou erro(reject).
+
+
 
 ![img](https://media.prod.mdn.mozit.cloud/attachments/2014/09/18/8633/51a934a714e191f53e588bff719bc321/promises.png)
+
+
+
+## Métodos
+
+#### Promise.all(lista)
+
+Retorna uma promise que é resolvida quando todas as promises no argumento lista forem resolvidas ou rejeitada assim que uma das promises da lista for rejeitada. Se a promise retornada for resolvida, ela é resolvida com um array dos valores das promises resolvidas da lista. Se a promise for rejeitada, ela é rejeitada com o motivo da primeira promise que foi rejeitada na lista. Este método pode ser útil para agregar resultados de múltiplas promises.
+
+
+```css
+Promise.all([
+  api.get('/users/andersonzeroone'),
+  api.get('/repos/BuscarrepositoriosdoGithu'),
+]).then([user, repo] => {
+  console.log(user);
+  console.log(repo);
+});
+```
+
+#### Promise.race(lista)
+
+Retorna uma promise que resolve ou rejeita assim que uma das promises do argumento lista resolve ou rejeita, com um valor ou o motivo daquela promise.
+
+
+```css
+const timeout = ms => new Promise((resolve, reject) => 
+  setTimeout(reject, ms, { timeout: true });
+);
+
+Promise.race([api.get('/users/andersonzeroone'), timeout(2000)])
+  .then(resp => console.log(resp))
+  .catch(err => console.log(err));
+
+```
+#### Promise.reject(motivo)
+
+Retorna um objeto Promise que foi rejeitado por um dado motivo.
+
+
+```css
+Promise.reject("Testando reject estático").then(function(motivo) {
+  // não executado
+}, function(motivo) {
+  console.log(motivo); // "Testando reject estático"
+});
+
+Promise.reject(new Error("falha")).then(function(erro) {
+  // não executado
+}, function(erro) {
+  console.log(erro); // Stacktrace
+});
+```
+#### Promise.resolve(valor)
+
+Retorna um objeto Promise que foi resolvido com um dado valor. Se o valor é thenable (possui um método then), a promise retornada "seguirá" este método, adotando esse estado eventual; caso contrário a promise retornada será realizada com o valor. Geralmente, se você quer saber se um valor é uma promise ou não, utilize Promise.resolve(valor) e trabalhe com a valor de retorno que é sempre uma promise.
+
+
+```css
+Promise.resolve("Success").then(function(value) {
+  console.log(value); // "Success"
+}, function(value) {
+  // not called
+});
+```
 
 
 ## XMLhttpRequest
 
 ## Api do Github
+
+Fontes:
+* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises;
+
+* https://medium.com/trainingcenter/entendendo-promises-de-uma-vez-por-todas-32442ec725c2;
+
+* https://blog.rocketseat.com.br/javascript-assincrono-promises/.
+
+
+
