@@ -11,10 +11,11 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
 * [Promises](#sobre-promises);
 * XMLhttpRequest;
-* Api do Github.
+* [Api do Github.](https://developer.github.com/v3/);
 
 
 img
+
 <img src="./img.png" width="800">
 
 
@@ -118,18 +119,46 @@ promise1()
 
 A chamada da segunda Promise dentro do .thenda primeira, e encadeamos outro .then logo abaixo para tratar o resultado da segunda.
 
+
+
 ### XMLhttpRequest
 
-###  Api do Github
+XMLHttpRequest(XHR) são usados ​​para interagir com servidores. Você pode recuperar dados de um URL sem precisar atualizar a página inteira. Isso permite que uma página da Web atualize apenas parte de uma página sem interromper o que o usuário está fazendo. XMLHttpRequesté muito usado na programação AJAX .
 
-Fontes:
+Apesar do nome, XMLHttpRequestpode ser usado para recuperar qualquer tipo de dados, não apenas XML.
+
+Se sua comunicação precisar envolver o recebimento de dados de eventos ou de mensagens de um servidor, considere o uso de eventos enviados pelo servidor por meio da EventSourceinterface. Para comunicação full-duplex, os WebSockets podem ser uma escolha melhor.
+
+
+### Algumas propiedades:
+
+ * XMLHttpRequest.onreadystatechange =>  Um EventHandlerque é chamado sempre que o readyStateatributo é alterado.
+
+* XMLHttpRequest.readyState => Somente leitura
+ Retorna um unsigned short, o estado da solicitação.
+
+* XMLHttpRequest.status  => Somente leitura 
+Retorna um unsigned shortcom o status da resposta da solicitação. 
+
+
+### Métodos
+
+* XMLHttpRequest.open()
+  Inicializa uma solicitação.
+
+* XMLHttpRequest.send()
+Envia a solicitação. Se a solicitação for assíncrona (que é o padrão), esse método retornará assim que a solicitação for enviada.
+
+#### Fontes:
 * https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises;
 
 * https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest;
 
 * https://medium.com/trainingcenter/entendendo-promises-de-uma-vez-por-todas-32442ec725c2;
 
-* https://blog.rocketseat.com.br/javascript-assincrono-promises/.
+* https://blog.rocketseat.com.br/javascript-assincrono-promises/;
+
+* https://developer.github.com/v3/.
 
 
 
