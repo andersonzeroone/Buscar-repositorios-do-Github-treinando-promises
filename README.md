@@ -103,6 +103,7 @@ Promise.resolve("Success").then(function(value) {
 });
 ```
 ### Encadeamento
+### Encadeamento
 
 Em alguns casos teremos uma Promise que retorna outra Promise e para acessar o resultado dessa segunda iremos precisar encadear as chamadas:
 
@@ -111,7 +112,7 @@ promise1()
   .then(resp => resp.promise2())
   .then(resp2 => console.log(resp2));
 
-  
+
 ### XMLhttpRequest
 
 ###  Api do Github
