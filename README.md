@@ -15,8 +15,8 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
 
 img
+<img src="./img.png" width="800">
 
-![img](./img.png)
 
 
 ### Sobre Promises
