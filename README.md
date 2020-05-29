@@ -10,12 +10,20 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 ### o que foi utilizado utilizado :
 
 * [Promises](#sobre-promises);
+<<<<<<< HEAD
 * [XMLhttpReques]t;(#sobre-XMLhttpReques);
 * [Api do Github.](https://developer.github.com/v3/).
 
 
 
 #### Imagem 
+=======
+* [XMLhttpReques]t;("sobre-XMLhttpReques);
+* [Api do Github.](https://developer.github.com/v3/).
+
+
+#### imagem
+>>>>>>> master
 
 <img src="./img.png" width="800">
 
