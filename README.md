@@ -9,15 +9,17 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
 ### o que foi utilizado utilizado :
 
-* Promises;
-* XMLhttpRequest(Ajax);
+* [Promises](#sobre-promises);
+* XMLhttpRequest;
 * Api do Github.
 
 
-Fonte:
+img
+
+![img](./img.png)
 
 
-### Promises
+### Sobre Promises
  A promise surgiu desde o 2015 no ES6, a promise é ulrilizada pelas principais requisições http como, axios,APiFetch entre outras. Facilemnte identificada pelas callback .then e .catch, o .then retorna sucesso na requisição e receber o resolve como parâmetro e o .catch para erros recebe o reject como parâmetro.
 
 ## Estados de uma Promise
@@ -108,11 +110,13 @@ Promise.resolve("Success").then(function(value) {
 
 Em alguns casos teremos uma Promise que retorna outra Promise e para acessar o resultado dessa segunda iremos precisar encadear as chamadas:
 
-
+```css
 promise1()
   .then(resp => resp.promise2())
   .then(resp2 => console.log(resp2));
+```
 
+A chamada da segunda Promise dentro do .thenda primeira, e encadeamos outro .then logo abaixo para tratar o resultado da segunda.
 
 ### XMLhttpRequest
 
@@ -120,6 +124,8 @@ promise1()
 
 Fontes:
 * https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises;
+
+* https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest;
 
 * https://medium.com/trainingcenter/entendendo-promises-de-uma-vez-por-todas-32442ec725c2;
 
