@@ -104,6 +104,8 @@ Promise.resolve("Success").then(function(value) {
 ```
 ### Encadeamento
 
+
+
 Em alguns casos teremos uma Promise que retorna outra Promise e para acessar o resultado dessa segunda iremos precisar encadear as chamadas:
 
 
