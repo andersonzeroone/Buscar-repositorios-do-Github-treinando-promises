@@ -10,11 +10,11 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 ### o que foi utilizado utilizado :
 
 * [Promises](#sobre-promises);
-* XMLhttpRequest;
-* [Api do Github.](https://developer.github.com/v3/);
+* [XMLhttpReques]t;(#sobre-XMLhttpReques);
+* [Api do Github.](https://developer.github.com/v3/).
 
 
-img
+#### imagem
 
 <img src="./img.png" width="800">
 
@@ -121,7 +121,7 @@ A chamada da segunda Promise dentro do .thenda primeira, e encadeamos outro .the
 
 
 
-### XMLhttpRequest
+### Sobre XMLhttpRequest
 
 XMLHttpRequest(XHR) são usados ​​para interagir com servidores. Você pode recuperar dados de um URL sem precisar atualizar a página inteira. Isso permite que uma página da Web atualize apenas parte de uma página sem interromper o que o usuário está fazendo. XMLHttpRequesté muito usado na programação AJAX .
 
