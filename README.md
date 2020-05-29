@@ -102,19 +102,19 @@ Promise.resolve("Success").then(function(value) {
   // not called
 });
 ```
+### Encadeamento
+
+Em alguns casos teremos uma Promise que retorna outra Promise e para acessar o resultado dessa segunda iremos precisar encadear as chamadas:
 
 
+promise1()
+  .then(resp => resp.promise2())
+  .then(resp2 => console.log(resp2));
 
-```css
-Promise.resolve("Success").then(function(value) {
-  console.log(value); // "Success"
-}, function(value) {
-  // not called
-});
-```
-## XMLhttpRequest
+  
+### XMLhttpRequest
 
-## Api do Github
+###  Api do Github
 
 Fontes:
 * https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises;
