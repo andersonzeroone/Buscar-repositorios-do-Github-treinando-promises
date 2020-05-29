@@ -10,7 +10,7 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 ### o que foi utilizado utilizado :
 
 * [Promises](#sobre-promises);
-* [XMLhttpReques](#sobre-XMLhttpReques);
+* [XMLhttpRequest](#sobre-xmlhttprequest);
 * [Api do Github.](https://developer.github.com/v3/).
 
 
