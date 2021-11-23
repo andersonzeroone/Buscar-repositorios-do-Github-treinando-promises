@@ -11,7 +11,7 @@ function usersPromises(){
         document.querySelector('.name').innerHTML = ``;
         document.querySelector('.userName').innerHTML = ``;
         document.querySelector('.locale').innerHTML = ``;
-        document.querySelector('.repo').innerHTML = ``;
+        document.querySelector('.titleRepo').innerHTML = ``;
         document.querySelector('.link').innerHTML = ``;
     }
     
@@ -83,7 +83,7 @@ function render(user,repositorio){
     document.querySelector('.name').appendChild(name);
 
     let userName = document.createElement('span');
-    userName.appendChild(document.createTextNode(`user Name: ${user.login}`));
+    userName.appendChild(document.createTextNode(`UserName: ${user.login}`));
     document.querySelector('.userName').appendChild(userName);
 
     let locale = document.createElement('span');
@@ -96,7 +96,7 @@ function render(user,repositorio){
     linkUser.appendChild(document.createTextNode('Acessar'));
     document.querySelector('.link').appendChild(linkUser);
     
-    let tagRepo = document.querySelector('.repo');
+    let tagRepo = document.querySelector('.titleRepo');
     tagRepo.innerHTML = `Repositorios: `
 
     console.log(`aqui ${user}`)
@@ -117,11 +117,11 @@ function render(user,repositorio){
         
         console.log(list);
 
-        list.forEach( repo =>{
+        list.forEach( (repo,index) =>{
 
             let li = document.createElement('li');
             li.setAttribute('id', 'list');
-            li.appendChild(document.createTextNode(`* ${repo.repositorioName} =>  `))
+            li.appendChild(document.createTextNode(`${index+1} -  ${repo.repositorioName} =>  `))
             let urlLink = document.createElement('a');
             urlLink.setAttribute('target','_blank');
             urlLink.setAttribute('href', repo.url);

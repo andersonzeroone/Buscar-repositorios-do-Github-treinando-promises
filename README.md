@@ -1,13 +1,36 @@
-## Buscar repositorios do Github - treinando promises
 
-O projeto foi criado com o intuito de ver na prática o funcionamento das promises e async. O projeto consiste no consumo da api do GitHub para buscar os repositórios do usuário informado assim como outras informações como: imagem, nome e cidade. Além disso, permite visitar os repositórios ou pagina do usuário através de um link.
+<h1 align="center">
+  Buscar repositorios do Github - treinando promises
+</h1>
 
-### Execução:
+----
+<h4 align="center">
+	🚧  treinando promises 🚀 em desenvolvimento 🚧
+</h4>
+<br/>
 
+<p align="center">
+ <a href="#sobre-o-projeto">Sobre o projeto</a> •
+ <a href="#como-executar">Como executar</a> •
+  <a href="#tecnologias">Tecnologias</a> •
+<a href="#layout">Layout</a> •
+ <a href="#sobre-promises">Sobre Promises</a> •
+ <a href="#estados-de-uma-promise">Estados de uma Promise</a> •
+  <a href="#métodos">Métodos</a> •
+ <a href="#contribuidores">Contribuidores</a> •
+ <a href="#autor">Autor</a> •
+<a href="#licenc-a">Licença</a> •
+</p>
+<br/>
+
+## Sobre o projeto
+O projeto foi criado com o intuito de ver na prática o funcionamento das promises. O projeto consiste no consumo da api do GitHub para buscar os repositórios do usuário e informações assim como: imagem, nome e cidade. Além disso, permite visitar os repositórios ou página do usuário através de um link.
+
+## Como executar
 Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
 
-### o que foi utilizado utilizado :
+### Tecnologias
 
 * [Promises](#sobre-promises);
 * [XMLhttpRequest](#sobre-xmlhttprequest);
@@ -15,37 +38,38 @@ Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
 
 
-#### Imagem 
+## Layout
 
-<img src="./img.png" width="800">
+<p align="center" >
+  <img alt="treinando promises"  width="450px" title="treinando promises" src="./img.png" />
+</p>
 
+---
 
+</br>
 
-### Sobre Promises
- A promise surgiu desde o 2015 no ES6, a promise é ulrilizada pelas principais requisições http como, axios,APiFetch entre outras. Facilemnte identificada pelas callback .then e .catch, o .then retorna sucesso na requisição e receber o resolve como parâmetro e o .catch para erros recebe o reject como parâmetro.
+## Sobre Promises
+A promise surgiu desde 2015 no ES6, a promise é utilizada pelas principais requisições http como, axios,APi Fetch entre outras. Facilmente identificada pelas callback .then e .catch, o .then retorna sucesso na requisição e recebe o resolve como parâmetro e o .catch para erros recebe o reject como parâmetro.
 
+---
 ## Estados de uma Promise
 
 Uma promise pode assumir quatro estados principais:
-
+ 
 * Pending: O estado inicial da Promise, ela foi iniciada, mas ainda não foi realizada nem rejeitada;
-
+ 
 * Fulfilled: Sucesso da operação, é o que chamamos de uma Promise realizada (ou, em inglês, resolved) — eu, pessoalmente, prefiro o termo resolvida;
-
+ 
 * Rejected: Falha da operação, é o que chamamos de uma Promise rejeitada (em inglês, rejected);
-
+ 
 * Settled: É o estado final da Promise, quando ela já sabe se foi resolved ou rejected.
-
-Quando uma promise estiver em estado pendente (pending) pode se tornar uma promises resolvida com um valor, ou rejeitada (retornar um erro). Quando um dos casos acontecer o metodo .then será chamodo ele irá verificar se houve um sucesso(resolve) ou erro(reject).
-
-
+ 
+Quando uma promise estiver em estado pendente (pending) pode se tornar uma promises resolvida com um valor, ou rejeitada (retornar um erro). Quando um dos casos acontecer o metodo .then será chamado e irá verificar se houve um sucesso(resolve) ou erro(reject).
 
 ![img](https://media.prod.mdn.mozit.cloud/attachments/2014/09/18/8633/51a934a714e191f53e588bff719bc321/promises.png)
 
-
-
+---
 ## Métodos
-
 #### Promise.all(lista)
 
 Retorna uma promise que é resolvida quando todas as promises no argumento lista forem resolvidas ou rejeitada assim que uma das promises da lista for rejeitada. Se a promise retornada for resolvida, ela é resolvida com um array dos valores das promises resolvidas da lista. Se a promise for rejeitada, ela é rejeitada com o motivo da primeira promise que foi rejeitada na lista. Este método pode ser útil para agregar resultados de múltiplas promises.
@@ -108,8 +132,6 @@ Promise.resolve("Success").then(function(value) {
 ```
 ### Encadeamento
 
-
-
 Em alguns casos teremos uma Promise que retorna outra Promise e para acessar o resultado dessa segunda iremos precisar encadear as chamadas:
 
 ```css
@@ -131,7 +153,7 @@ Apesar do nome, XMLHttpRequestpode ser usado para recuperar qualquer tipo de dad
 Se sua comunicação precisar envolver o recebimento de dados de eventos ou de mensagens de um servidor, considere o uso de eventos enviados pelo servidor por meio da EventSourceinterface. Para comunicação full-duplex, os WebSockets podem ser uma escolha melhor.
 
 
-### Algumas propiedades:
+### Algumas propriedades:
 
  * XMLHttpRequest.onreadystatechange =>  Um EventHandlerque é chamado sempre que o readyStateatributo é alterado.
 
@@ -141,6 +163,9 @@ Se sua comunicação precisar envolver o recebimento de dados de eventos ou de m
 * XMLHttpRequest.status  => Somente leitura 
 Retorna um unsigned shortcom o status da resposta da solicitação. 
 
+---
+
+</br>
 
 ### Métodos
 
@@ -149,6 +174,10 @@ Retorna um unsigned shortcom o status da resposta da solicitação.
 
 * XMLHttpRequest.send()
 Envia a solicitação. Se a solicitação for assíncrona (que é o padrão), esse método retornará assim que a solicitação for enviada.
+
+---
+
+</br>
 
 #### Fontes:
 * https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises;
@@ -161,5 +190,50 @@ Envia a solicitação. Se a solicitação for assíncrona (que é o padrão), es
 
 * https://developer.github.com/v3/.
 
+---
+
+</br>
+
+## Contribuidores
+
+💜 Um super thanks 👏 para essa galera que fez esse produto sair do campo da ideia e entrar nas lojas de aplicativos :)
+
+## Como contribuir para o projeto
+
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
+> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](./CONTRIBUTING.md)
+
+---
+
+##  Autor
+</br>
+
+<a href="https://github.com/andersonzeroone">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/33969430?v=4" width="100px;" alt=""/>
+ <br />
+ <br />
+ <sub><b>Anderson Pablo</b></sub></a> <a href="https://www.linkedin.com/in/anderson-pablo-js/" title="andersonPablo">🚀</a>
+ <br />
+
+
+ [![Linkedin Badge](https://img.shields.io/badge/-Anderson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/anderson-pablo-js/)](https://www.linkedin.com/in/anderson-pablo-js/)
+[![Gmail Badge](https://img.shields.io/badge/-anderson.pablo02@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:anderson.pablo02@gmail.com)](mailto:anderson.pablo02@gmail.com)
+
+---
+
+## Licença
+
+Este projeto está sob a licença [MIT](./LICENSE).
+
+Feito com ❤️ por Anderson Pablo 👋🏽 [Entre em contato!](https://www.linkedin.com/in/anderson-pablo-js/)
+
+---
+
+<!-- ##  Versões do README
+
+[Português 🇧🇷](./README.md)  |  [Inglês sem emojis 🇺🇸](./README-en.md) | [Portugues sem logo  🇧🇷](./README-sem-logo.md)  -->
 
 
