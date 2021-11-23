@@ -1,5 +1,6 @@
 function usersPromises(){
-    let user = document.querySelector('.input').value; 
+    // let user = document.querySelector('.input').value; 
+    let user = 'andersonzeroone' 
     let ul = document.querySelector('ul'); 
     let urlUser = `https://api.github.com/users/${user}`; 
     let urlRepos =  `https://api.github.com/users/${user}/repos`;     

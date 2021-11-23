@@ -11,6 +11,7 @@
 
 <p align="center">
  <a href="#sobre-o-projeto">Sobre o projeto</a> •
+ <a href="#versão-online">Versão online</a> •
  <a href="#como-executar">Como executar</a> •
   <a href="#tecnologias">Tecnologias</a> •
 <a href="#layout">Layout</a> •
@@ -26,6 +27,9 @@
 ## Sobre o projeto
 O projeto foi criado com o intuito de ver na prática o funcionamento das promises. O projeto consiste no consumo da api do GitHub para buscar os repositórios do usuário e informações assim como: imagem, nome e cidade. Além disso, permite visitar os repositórios ou página do usuário através de um link.
 
+## Versão online
+
+Para ver a versão online acesse o link:     [repositorios-do-github](https://buscar-repositorios-do-github-treinando-promises.vercel.app/)
 ## Como executar
 Para executar o projeto basta inicializar o arquivo "index.hmtl".
 
